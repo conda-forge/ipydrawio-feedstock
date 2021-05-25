@@ -1,4 +1,4 @@
-{% set version = "1.0.1" %}
+{% set version = "1.1.0" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,11 +8,11 @@ package:
 source:
   - folder: ipydrawio
     url: https://pypi.io/packages/source/i/ipydrawio/ipydrawio-{{ version }}.tar.gz
-    sha256: 46562bd0a598c299c1f1bab089f049d0303785af9328065b69096695a77a3926
+    sha256: de9af4c1039933c9920a65adb7db468e82a79145c5fc221000f6ff35f1e7a446
 
   - folder: ipydrawio-export
     url: https://pypi.io/packages/source/i/ipydrawio-export/ipydrawio-export-{{ version }}.tar.gz
-    sha256: 60bd7f0e66c67cffc5060f055670e6497344d195da77229b9a7adba143d81872
+    sha256: 16cc720761dca290bc0c14fadbdf23e487c2ba821c09ccf5c1aa9cce9c492fc8
 
 build:
   number: {{ build_number }}
@@ -44,8 +44,7 @@ outputs:
       run:
         - ipywidgets >=7.6
         - jupyterlab ==3.*
-        - jupyterlab_widgets >=1
-        - lxml
+        - jupyterlab_widgets >=1x
         - python >=3.6
     test:
       imports:
@@ -64,6 +63,9 @@ outputs:
       summary: Draw.io Diagrams as Jupyter Widgets
       license: Apache-2.0
       license_file: ipydrawio/LICENSE.txt
+      doc_url: https://ipydrawio.rtfd.io
+      doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
+
 
   - name: ipydrawio-export
     version: {{ version }}
@@ -80,11 +82,12 @@ outputs:
         - python >=3.6
       run:
         - ipydrawio =={{ version }}.*
-        - python >=3.6
+        - lxml
+        - nodejs
         - pillow
         - pypdf2
+        - python >=3.6
         - requests_cache
-        - nodejs
     test:
       imports:
         - ipydrawio_export
@@ -110,12 +113,16 @@ outputs:
       summary: PDF export for IPyDrawio
       license: Apache-2.0
       license_file: ipydrawio-export/LICENSE.txt
+      doc_url: https://ipydrawio.rtfd.io
+      doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
 
 about:
   home: https://github.com/deathbeds/ipydrawio
   summary: Draw.io Diagrams as Jupyter Widgets
   license: Apache-2.0
   license_file: ipydrawio/LICENSE.txt
+  doc_url: https://ipydrawio.rtfd.io
+  doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
 
 extra:
   feedstock-name: ipydrawio
