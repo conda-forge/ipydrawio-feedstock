@@ -63,6 +63,9 @@ outputs:
       summary: Draw.io Diagrams as Jupyter Widgets
       license: Apache-2.0
       license_file: ipydrawio/LICENSE.txt
+      doc_url: https://ipydrawio.rtfd.io
+      doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
+
 
   - name: ipydrawio-export
     version: {{ version }}
@@ -110,12 +113,16 @@ outputs:
       summary: PDF export for IPyDrawio
       license: Apache-2.0
       license_file: ipydrawio-export/LICENSE.txt
+      doc_url: https://ipydrawio.rtfd.io
+      doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
 
 about:
   home: https://github.com/deathbeds/ipydrawio
   summary: Draw.io Diagrams as Jupyter Widgets
   license: Apache-2.0
   license_file: ipydrawio/LICENSE.txt
+  doc_url: https://ipydrawio.rtfd.io
+  doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
 
 extra:
   feedstock-name: ipydrawio
