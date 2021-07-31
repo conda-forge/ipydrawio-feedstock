@@ -37,6 +37,8 @@ outputs:
       noarch: python
       script:
         - cd ipydrawio && {{ PYTHON }} -m pip install . -vv --no-deps
+      entry_points:
+        - jupyter-ipydrawio = ipydrawio.app:main
     requirements:
       host:
         - pip
@@ -56,6 +58,8 @@ outputs:
         - pytest-cov
       commands:
         - pip check
+        - jupyter ipydrawio --version
+        - jupyter ipydrawio --help
         - jupyter labextension list
         - jupyter labextension list 1>labextensions 2>&1
         - cat labextensions | grep "@deathbeds/ipydrawio.*OK"  # [unix]
@@ -108,6 +112,8 @@ outputs:
         - pytest-console-scripts
       commands:
         - pip check
+        - jupyter ipydrawio-export --version
+        - jupyter ipydrawio-export --help
         - jupyter labextension list
         - jupyter labextension list 1>labextensions 2>&1
         - cat labextensions | grep "@deathbeds/ipydrawio-pdf.*OK"  # [unix]
