@@ -1,4 +1,4 @@
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,11 +8,11 @@ package:
 source:
   - folder: ipydrawio
     url: https://pypi.io/packages/source/i/ipydrawio/ipydrawio-{{ version }}.tar.gz
-    sha256: de9af4c1039933c9920a65adb7db468e82a79145c5fc221000f6ff35f1e7a446
+    sha256: 087c6c4cf8c4969c64db307fb8426aefc5ce47146cbe1ffd24bec0291ede14d6
 
   - folder: ipydrawio-export
     url: https://pypi.io/packages/source/i/ipydrawio-export/ipydrawio-export-{{ version }}.tar.gz
-    sha256: 16cc720761dca290bc0c14fadbdf23e487c2ba821c09ccf5c1aa9cce9c492fc8
+    sha256: 7f36a00d8083979d23fc20375581bff675aed7559b18bb1d2399041d950f8fab
 
 build:
   number: {{ build_number }}
@@ -37,6 +37,8 @@ outputs:
       noarch: python
       script:
         - cd ipydrawio && {{ PYTHON }} -m pip install . -vv --no-deps
+      entry_points:
+        - jupyter-ipydrawio = ipydrawio.app:main
     requirements:
       host:
         - pip
@@ -44,27 +46,39 @@ outputs:
       run:
         - ipywidgets >=7.6
         - jupyterlab ==3.*
-        - jupyterlab_widgets >=1x
+        - jupyterlab_widgets >=1
+        - lxml
         - python >=3.6
     test:
       imports:
         - ipydrawio
       requires:
         - pip
+        - pytest-console-scripts
         - pytest-cov
       commands:
         - pip check
+        - jupyter ipydrawio --version
+        - jupyter ipydrawio --help
         - jupyter labextension list
         - jupyter labextension list 1>labextensions 2>&1
         - cat labextensions | grep "@deathbeds/ipydrawio.*OK"  # [unix]
+        - cat labextensions | grep -ie "@deathbeds/ipydrawio-webpack .*OK"  # [unix]
+        - cat labextensions | grep -ie "@deathbeds/ipydrawio-notebook .*OK"  # [unix]
+        - cat labextensions | grep -ie "@deathbeds/ipydrawio-jupyter-templates .*OK"  # [unix]
         - pytest -vv --pyargs ipydrawio --cov=ipydrawio --cov-fail-under=100 --cov-report=term-missing:skip-covered
     about:
       home: https://github.com/deathbeds/ipydrawio
       summary: Draw.io Diagrams as Jupyter Widgets
       license: Apache-2.0
-      license_file: ipydrawio/LICENSE.txt
       doc_url: https://ipydrawio.rtfd.io
       doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
+      license_file:
+        - ipydrawio/LICENSE.txt
+        - ipydrawio/src/ipydrawio/ext/ipd/static/third-party-licenses.json
+        - ipydrawio/src/ipydrawio/ext/ipdnb/static/third-party-licenses.json
+        - ipydrawio/src/ipydrawio/ext/ipdwp/static/third-party-licenses.json
+        - ipydrawio/src/ipydrawio/ext/ipjt/static/third-party-licenses.json
 
 
   - name: ipydrawio-export
@@ -83,7 +97,7 @@ outputs:
       run:
         - ipydrawio =={{ version }}.*
         - lxml
-        - nodejs
+        - nodejs >=12
         - pillow
         - pypdf2
         - python >=3.6
@@ -98,6 +112,8 @@ outputs:
         - pytest-console-scripts
       commands:
         - pip check
+        - jupyter ipydrawio-export --version
+        - jupyter ipydrawio-export --help
         - jupyter labextension list
         - jupyter labextension list 1>labextensions 2>&1
         - cat labextensions | grep "@deathbeds/ipydrawio-pdf.*OK"  # [unix]
@@ -112,9 +128,11 @@ outputs:
       home: https://github.com/deathbeds/ipydrawio
       summary: PDF export for IPyDrawio
       license: Apache-2.0
-      license_file: ipydrawio-export/LICENSE.txt
       doc_url: https://ipydrawio.rtfd.io
-      doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/docs
+      doc_source_url: https://github.com/deathbeds/ipydrawio/tree/v{{ version }}/
+      license_file:
+      - ipydrawio-export/LICENSE.txt
+      - ipydrawio-export/src/ipydrawio_export/ext/ipdpdf/static/third-party-licenses.json
 
 about:
   home: https://github.com/deathbeds/ipydrawio
