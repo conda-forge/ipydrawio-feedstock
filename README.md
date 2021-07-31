@@ -9,6 +9,8 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ipydrawio-feeds
 
 Summary: Draw.io Diagrams as Jupyter Widgets
 
+Documentation: https://ipydrawio.rtfd.io
+
 Current build status
 ====================
 
