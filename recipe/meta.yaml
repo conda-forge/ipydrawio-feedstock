@@ -52,6 +52,7 @@ outputs:
         - ipydrawio
       requires:
         - pip
+        - pytest-console-scripts
         - pytest-cov
       commands:
         - pip check
