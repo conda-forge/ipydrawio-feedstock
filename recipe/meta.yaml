@@ -1,4 +1,4 @@
-{% set version = "1.1.1" %}
+{% set version = "1.1.2" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,11 +8,11 @@ package:
 source:
   - folder: ipydrawio
     url: https://pypi.io/packages/source/i/ipydrawio/ipydrawio-{{ version }}.tar.gz
-    sha256: 087c6c4cf8c4969c64db307fb8426aefc5ce47146cbe1ffd24bec0291ede14d6
+    sha256: f199f03893cd071687bc6fabc7a6201a9c831c28a723af0f703587e926bb8965
 
   - folder: ipydrawio-export
     url: https://pypi.io/packages/source/i/ipydrawio-export/ipydrawio-export-{{ version }}.tar.gz
-    sha256: 7f36a00d8083979d23fc20375581bff675aed7559b18bb1d2399041d950f8fab
+    sha256: b780a5fd4e5678f20f5e687d1e75c169534383f59fbaede5c96c3b20d0cb6c24
 
 build:
   number: {{ build_number }}
