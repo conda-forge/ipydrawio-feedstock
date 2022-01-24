@@ -1,4 +1,4 @@
-{% set version = "1.1.3" %}
+{% set version = "1.2.0" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,11 +8,15 @@ package:
 source:
   - folder: ipydrawio
     url: https://pypi.io/packages/source/i/ipydrawio/ipydrawio-{{ version }}.tar.gz
-    sha256: 0a29e805a064ddc0bd8deead240ce4d523e6e33602c4f620fd8f9ed00994234b
+    sha256: 67f3a4aff1a9a983d7ceec5e645962e29b76ddeddd052a1e53772f56866d00fe
 
   - folder: ipydrawio-export
     url: https://pypi.io/packages/source/i/ipydrawio-export/ipydrawio-export-{{ version }}.tar.gz
-    sha256: 18c738de6219649fc9b084fc43838fd4cbb6403b5aedc201b4062b9b84a4c756
+    sha256: 1335101ab99db20e0d888d9daf3a2c2e0f6be1d29412892bb0d26755c5b85005
+
+  - folder: ipydrawio-widgets
+    url: https://pypi.io/packages/source/i/ipydrawio-widgets/ipydrawio-widgets-{{ version }}.tar.gz
+    sha256: e5d63d1b15a9f5521c1966a2144652babf9ebe0753f212c008c640cb80db3f0b
 
 build:
   number: {{ build_number }}
@@ -21,15 +25,45 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python >=3.7
   run:
-    - python >=3.6
+    - python >=3.7
 
 test:
   commands:
     - echo "tests in outputs"
 
 outputs:
+  - name: ipydrawio-widgets
+    version: {{ version }}
+    build:
+      number: {{ build_number }}
+      noarch: python
+      script:
+        - cd ipydrawio-widgets && {{ PYTHON }} -m pip install . -vv --no-deps
+    requirements:
+      host:
+        - pip
+        - python >=3.7
+      run:
+        - ipywidgets >=7.6,<8
+        - python >=3.7
+    test:
+      imports:
+        - ipydrawio_widgets
+      requires:
+        - pip
+        - pytest-console-scripts
+        - pytest-cov
+      commands:
+        - pip check
+        - pytest -vv --pyargs ipydrawio_widgets --cov=ipydrawio_widgets --cov-report=term-missing:skip-covered
+    about:
+      home: https://github.com/deathbeds/ipydrawio
+      summary: Draw.io Diagrams as Jupyter Widgets (kernel only)
+      license: Apache-2.0
+      license_file: ipydrawio-widgets/LICENSE.txt
+
   - name: ipydrawio
     version: {{ version }}
     build:
@@ -42,13 +76,13 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.6
+        - python >=3.7
       run:
-        - ipywidgets >=7.6
+        - {{ pin_subpackage("ipydrawio-widgets", exact=True) }}
         - jupyterlab ==3.*
         - jupyterlab_widgets >=1
         - lxml
-        - python >=3.6
+        - python >=3.7
     test:
       imports:
         - ipydrawio
@@ -93,14 +127,14 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.6
+        - python >=3.7
       run:
-        - ipydrawio =={{ version }}.*
+        - {{ pin_subpackage("ipydrawio", exact=True) }}
         - lxml
-        - nodejs >=12
+        - nodejs >=12,!=13,!=15,!=17
         - pillow
         - pypdf2
-        - python >=3.6
+        - python >=3.7
         - requests_cache
     test:
       imports:
