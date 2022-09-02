@@ -1,4 +1,4 @@
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,15 +8,15 @@ package:
 source:
   - folder: ipydrawio
     url: https://pypi.io/packages/source/i/ipydrawio/ipydrawio-{{ version }}.tar.gz
-    sha256: 67f3a4aff1a9a983d7ceec5e645962e29b76ddeddd052a1e53772f56866d00fe
+    sha256: db10098dbcd4f850b09f9b82f7237e31b475bcbae6d9bb0247ff981b50af8dcc
 
   - folder: ipydrawio-export
     url: https://pypi.io/packages/source/i/ipydrawio-export/ipydrawio-export-{{ version }}.tar.gz
-    sha256: 1335101ab99db20e0d888d9daf3a2c2e0f6be1d29412892bb0d26755c5b85005
+    sha256: 4a0efeb0d551abb9435220df51e9d6c37dfb945c4f6165993dd7dea743256125
 
   - folder: ipydrawio-widgets
     url: https://pypi.io/packages/source/i/ipydrawio-widgets/ipydrawio-widgets-{{ version }}.tar.gz
-    sha256: e5d63d1b15a9f5521c1966a2144652babf9ebe0753f212c008c640cb80db3f0b
+    sha256: 7ed4860898a1d3472c17ab28caf6b5d5a41614becb94fb280e9200949b43b1d2
 
 build:
   number: {{ build_number }}
@@ -46,7 +46,7 @@ outputs:
         - pip
         - python >=3.7
       run:
-        - ipywidgets >=7.6,<8
+        - ipywidgets >=7.6,<9
         - python >=3.7
     test:
       imports:
