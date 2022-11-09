@@ -29,6 +29,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-ipydrawio-green.svg)](https://anaconda.org/conda-forge/ipydrawio) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ipydrawio.svg)](https://anaconda.org/conda-forge/ipydrawio) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ipydrawio.svg)](https://anaconda.org/conda-forge/ipydrawio) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ipydrawio.svg)](https://anaconda.org/conda-forge/ipydrawio) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-ipydrawio--export-green.svg)](https://anaconda.org/conda-forge/ipydrawio-export) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ipydrawio-export.svg)](https://anaconda.org/conda-forge/ipydrawio-export) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ipydrawio-export.svg)](https://anaconda.org/conda-forge/ipydrawio-export) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ipydrawio-export.svg)](https://anaconda.org/conda-forge/ipydrawio-export) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ipydrawio--mathjax-green.svg)](https://anaconda.org/conda-forge/ipydrawio-mathjax) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ipydrawio-mathjax.svg)](https://anaconda.org/conda-forge/ipydrawio-mathjax) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ipydrawio-mathjax.svg)](https://anaconda.org/conda-forge/ipydrawio-mathjax) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ipydrawio-mathjax.svg)](https://anaconda.org/conda-forge/ipydrawio-mathjax) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-ipydrawio--widgets-green.svg)](https://anaconda.org/conda-forge/ipydrawio-widgets) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ipydrawio-widgets.svg)](https://anaconda.org/conda-forge/ipydrawio-widgets) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ipydrawio-widgets.svg)](https://anaconda.org/conda-forge/ipydrawio-widgets) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ipydrawio-widgets.svg)](https://anaconda.org/conda-forge/ipydrawio-widgets) |
 
 Installing ipydrawio
@@ -41,16 +42,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `ipydrawio, ipydrawio-export, ipydrawio-widgets` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `ipydrawio, ipydrawio-export, ipydrawio-mathjax, ipydrawio-widgets` can be installed with `conda`:
 
 ```
-conda install ipydrawio ipydrawio-export ipydrawio-widgets
+conda install ipydrawio ipydrawio-export ipydrawio-mathjax ipydrawio-widgets
 ```
 
 or with `mamba`:
 
 ```
-mamba install ipydrawio ipydrawio-export ipydrawio-widgets
+mamba install ipydrawio ipydrawio-export ipydrawio-mathjax ipydrawio-widgets
 ```
 
 It is possible to list all of the versions of `ipydrawio` available on your platform with `conda`:
