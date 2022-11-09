@@ -161,7 +161,7 @@ outputs:
         - jupyter serverextension list 1>serverextensions 2>&1
         - grep -iE "@deathbeds/ipydrawio-pdf.*OK" labextensions
         - grep -iE "ipydrawio_export .*OK" serverextensions
-        - pytest -vv --script-launch-mode=subprocess ipydrawio-export/tests
+        - pytest -vv --script-launch-mode=subprocess ipydrawio-export/tests || pytest -vv --script-launch-mode=subprocess ipydrawio-export/tests
     about:
       home: https://github.com/deathbeds/ipydrawio
       summary: PDF export for IPyDrawio
