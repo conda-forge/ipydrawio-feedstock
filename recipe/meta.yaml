@@ -51,6 +51,7 @@ outputs:
         - python >=3.8
       run:
         - ipywidgets >=7.6,<9
+        - jsonschema
         - python >=3.8
     test:
       source_files:
