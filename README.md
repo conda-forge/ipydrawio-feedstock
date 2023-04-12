@@ -1,13 +1,54 @@
+About ipydrawio-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ipydrawio-feedstock/blob/main/LICENSE.txt)
+
 About ipydrawio
-===============
+---------------
 
 Home: https://github.com/deathbeds/ipydrawio
 
 Package license: Apache-2.0
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ipydrawio-feedstock/blob/main/LICENSE.txt)
+Summary: Draw.io Diagrams as Jupyter Widgets
+
+Documentation: https://ipydrawio.rtfd.io
+About ipydrawio-widgets
+-----------------------
+
+Home: https://github.com/deathbeds/ipydrawio
+
+Package license: Apache-2.0
 
 Summary: Draw.io Diagrams as Jupyter Widgets (kernel only)
+About ipydrawio
+---------------
+
+Home: https://github.com/deathbeds/ipydrawio
+
+Package license: Apache-2.0
+
+Summary: Draw.io Diagrams as Jupyter Widgets
+
+Documentation: https://ipydrawio.rtfd.io
+About ipydrawio-export
+----------------------
+
+Home: https://github.com/deathbeds/ipydrawio
+
+Package license: Apache-2.0
+
+Summary: PDF export for IPyDrawio
+
+Documentation: https://ipydrawio.rtfd.io
+About ipydrawio-mathjax
+-----------------------
+
+Home: https://github.com/deathbeds/ipydrawio
+
+Package license: Apache-2.0
+
+Summary: MathJax for ipydrawio
 
 Current build status
 ====================
