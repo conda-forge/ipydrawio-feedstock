@@ -1,4 +1,4 @@
-{% set version = "1.2.2" %}
+{% set version = "1.3.0" %}
 {% set build_number = 0 %}
 
 package:
@@ -8,19 +8,19 @@ package:
 source:
   - folder: ipydrawio
     url: https://pypi.io/packages/source/i/ipydrawio/ipydrawio-{{ version }}.tar.gz
-    sha256: c2b99d501e21676d51ebd73fc11ef8a29d6a7736756686d69f55dc4a5430b0aa
+    sha256: 7cf64dcbaf6abeccdc1b85a725648ec23b63f5c8743732c4cc409f440f98bc33
 
   - folder: ipydrawio-export
     url: https://pypi.io/packages/source/i/ipydrawio-export/ipydrawio-export-{{ version }}.tar.gz
-    sha256: 61df9c9ede657d6626c4cff06d00f7ab513fdd58c66f96b5e0253fc688e50858
+    sha256: a89abc2105e432888c41494b14f0543c4a50be50079488ea10bb624935deb453
 
   - folder: ipydrawio-widgets
     url: https://pypi.io/packages/source/i/ipydrawio-widgets/ipydrawio-widgets-{{ version }}.tar.gz
-    sha256: bc9195c0739e3f1f0ec0b4806232b8fa1ef0c32f8bc4e168de0c858f502e21f2
+    sha256: dc700d4a6165b2e99a81a4ff7ba2a4f0b16c3b73e2061b7e0c2a89cd218852ff
 
   - folder: ipydrawio-mathjax
     url: https://pypi.io/packages/source/i/ipydrawio-mathjax/ipydrawio-mathjax-{{ version }}.tar.gz
-    sha256: 003a9bcab9636876e7b3d20c935162aa301d6669beb07e6665f76b1454363b22
+    sha256: 675a572811dbf5e9f70ea7577c34cba0220989e4af31873436633b134242ca69
 
 build:
   number: {{ build_number }}
@@ -29,9 +29,9 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python >=3.8
   run:
-    - python >=3.7
+    - python >=3.8
 
 test:
   commands:
@@ -48,10 +48,10 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - ipywidgets >=7.6,<9
-        - python >=3.7
+        - python >=3.8
     test:
       source_files:
         - ipydrawio-widgets/tests
@@ -81,13 +81,13 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - {{ pin_subpackage("ipydrawio-widgets", exact=True) }}
         - jupyterlab ==3.*
         - jupyterlab_widgets >=1
         - lxml
-        - python >=3.7
+        - python >=3.8
     test:
       source_files:
         - ipydrawio/tests
@@ -133,14 +133,14 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - {{ pin_subpackage("ipydrawio", exact=True) }}
         - lxml
-        - nodejs >=12,!=13,!=15,!=17
+        - nodejs >=12,!=13,!=15,!=17,!=19
         - pillow
-        - pypdf2
-        - python >=3.7
+        - pypdf >=3.5
+        - python >=3.8
         - requests_cache
     test:
       source_files:
@@ -151,6 +151,7 @@ outputs:
         - pip
         - pytest-tornasync
         - pytest-console-scripts
+        - pytest-jupyter-server
         - m2-grep  # [win]
       commands:
         - pip check
@@ -183,10 +184,10 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.7
+        - python >=3.8
       run:
         - {{ pin_subpackage("ipydrawio", max_pin="x.x.x") }}
-        - python >=3.7
+        - python >=3.8
     test:
       source_files:
         - ipydrawio-mathjax/tests
